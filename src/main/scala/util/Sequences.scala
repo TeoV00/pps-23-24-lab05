@@ -23,6 +23,13 @@ object Sequences: // Essentially, generic linkedlists
     def empty[A]: Sequence[A] = Nil()
 
     extension [A](sequence: Sequence[A])
+
+      def insert(element: A): Sequence[A] =
+        sequence.concat(Cons(element, Nil()))
+
+      def remove(element: A): Sequence[A] =
+        sequence.filter(_ != element)
+
       def head: Optional[A] = sequence match
         case Cons(h, _) => Just(h)
         case _ => Empty()
